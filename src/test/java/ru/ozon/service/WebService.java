@@ -9,15 +9,15 @@ public class WebService {
 
     private static WebConfig config = ConfigFactory.newInstance().create(WebConfig.class, System.getProperties());
 
-    public static String getBrowserName() {
-        return config.browserName();
-    }
-
     public static boolean isRemote() {
         return config.isRemote();
     }
 
     public static URL getRemoteUrl() {
         return config.remoteBrowserUrl();
+    }
+
+    public static boolean isVideoOn() {
+        return config.isVideoOn();
     }
 }

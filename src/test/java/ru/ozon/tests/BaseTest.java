@@ -13,7 +13,10 @@ import ru.ozon.service.WebService;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.getWebDriverLogs;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.openqa.selenium.logging.LogType.BROWSER;
+import static ru.ozon.service.WebService.getRemoteUrl;
+import static ru.ozon.service.WebService.isRemote;
 import static ru.ozon.utils.AttachmentsHelper.attachBrowserLogs;
 import static ru.ozon.utils.AttachmentsHelper.attachPageSource;
 import static ru.ozon.utils.AttachmentsHelper.attachScreenshot;
@@ -40,11 +43,12 @@ public class BaseTest {
         Configuration.baseUrl = "https://www.ozon.ru/";
         Configuration.startMaximized = true;
 
-        if (System.getProperty("selenide.browser") != null) {
-            Configuration.browser = WebService.getBrowserName();
+        if (isEmpty(System.getProperty("selenide.browser"))) {
+            Configuration.browser = "chrome";
         }
-        if (WebService.isRemote()) {
-            Configuration.remote = String.valueOf(WebService.getRemoteUrl());
+
+        if (isRemote()) {
+            Configuration.remote = String.valueOf(getRemoteUrl());
         }
     }
 
@@ -53,8 +57,9 @@ public class BaseTest {
         attachBrowserLogs(String.join("\n", getWebDriverLogs(BROWSER)));
         attachScreenshot();
         attachPageSource();
-        attachVideo();
-
+        if (WebService.isVideoOn()) {
+            attachVideo();
+        }
         closeWebDriver();
     }
 }
