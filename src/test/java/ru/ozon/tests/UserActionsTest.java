@@ -1,5 +1,6 @@
 package ru.ozon.tests;
 
+import io.qameta.allure.AllureId;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
@@ -19,6 +20,7 @@ import static ru.ozon.utils.TestUtils.prepareCookies;
 @Feature("User Actions")
 public class UserActionsTest extends BaseTest {
 
+    @AllureId("1721")
     @Test
     @DisplayName("Добавление товара в корзину")
     @Tag("Critical")
@@ -35,6 +37,7 @@ public class UserActionsTest extends BaseTest {
                 .checkItemInCart(0, itemImageSrc);
     }
 
+    @AllureId("1723")
     @Test
     @DisplayName("Удаление товара из корзины")
     @Story("Work with cart")
@@ -50,6 +53,7 @@ public class UserActionsTest extends BaseTest {
                 .checkItemsListEmpty();
     }
 
+    @AllureId("1724")
     @Test
     @DisplayName("Добавление товара в избранное")
     @Story("Work with favourites")
@@ -64,6 +68,7 @@ public class UserActionsTest extends BaseTest {
                 .checkItemInFavourites(0, itemImageSrc);
     }
 
+    @AllureId("1722")
     @Test
     @DisplayName("Удаление товара из избранного")
     @Story("Work with favourites")

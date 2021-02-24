@@ -1,5 +1,6 @@
 package ru.ozon.tests;
 
+import io.qameta.allure.AllureId;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
@@ -13,6 +14,7 @@ import static com.codeborne.selenide.Selenide.open;
 @Story("Negative checks")
 class LoginTest extends BaseTest {
 
+    @AllureId("1717")
     @Test
     @DisplayName("Should not login if email input is empty")
     void shouldNotLoginWithEmptyEmail() {
@@ -22,6 +24,7 @@ class LoginTest extends BaseTest {
                 .checkError("Заполните почту");
     }
 
+    @AllureId("1716")
     @Test
     @DisplayName("Should not login if email format is incorrect")
     void shouldNotLoginWithIncorrectEmail() {
@@ -31,6 +34,7 @@ class LoginTest extends BaseTest {
                 .checkError("Некорректный формат почты");
     }
 
+    @AllureId("1720")
     @Test
     @DisplayName("Should not login if user doesn't exist")
     void shouldNotLoginIfUserDoesNotExist() {
@@ -40,6 +44,7 @@ class LoginTest extends BaseTest {
                 .checkError("Пользователь с указанным email не найден");
     }
 
+    @AllureId("1718")
     @Test
     @DisplayName("Should not login if phone input is empty")
     void shouldNotLoginWithEmptyPhone() {
@@ -49,6 +54,7 @@ class LoginTest extends BaseTest {
                 .checkError("Заполните телефон");
     }
 
+    @AllureId("1719")
     @Test
     @DisplayName("Should not login if phone format is incorrect")
     void shouldNotLoginWithIncorrectPhoneFormat() {

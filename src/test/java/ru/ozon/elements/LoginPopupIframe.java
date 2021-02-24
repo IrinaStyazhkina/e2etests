@@ -36,5 +36,4 @@ public class LoginPopupIframe {
         errorMessage.shouldHave(text(error));
         return this;
     }
-
 }
