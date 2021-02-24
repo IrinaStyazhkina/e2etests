@@ -20,6 +20,7 @@ public class LoginPopupIframe {
     public LoginPopupIframe tryToLoginWithEmail(String email) {
         loginByEmailButton.click();
         emailInput.setValue(email);
+        checkNoPopupVisible();
         submitButton.click();
         return this;
     }
@@ -27,6 +28,7 @@ public class LoginPopupIframe {
     @Step("Try to login with phone: {phone}")
     public LoginPopupIframe tryToLoginWithPhone(String phone) {
         phoneInput.setValue(phone);
+        checkNoPopupVisible();
         submitButton.click();
         return this;
     }
@@ -34,6 +36,13 @@ public class LoginPopupIframe {
     @Step("Check error message displayed: {error}")
     public LoginPopupIframe checkError(String error) {
         errorMessage.shouldHave(text(error));
+        return this;
+    }
+
+    public LoginPopupIframe checkNoPopupVisible() {
+        if ($("div[data-widget='alertPopup']").has(text("Вы находитесь в зоне очень быстрой доставки!"))) {
+            $("[data-widget='alertPopup'] button").click();
+        }
         return this;
     }
 }
