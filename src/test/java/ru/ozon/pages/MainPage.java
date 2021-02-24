@@ -28,7 +28,6 @@ public class MainPage {
     @Step("Add item into cart")
     public String addItemInCart(int index) {
         String itemImageSrc = itemsLine.$("img", index).getAttribute("src");
-        checkNoPopupVisible();
         addToCartButtons.get(index).click();
         return getImageNameFromSrc(requireNonNull(itemImageSrc));
     }
@@ -48,7 +47,6 @@ public class MainPage {
     @Step("Add item to favourites")
     public String addItemToFavourites(int index) {
         String itemImageSrc = itemsLine.$("img", index).getAttribute("src");
-        checkNoPopupVisible();
         itemsLine.$("img", index).closest("a").preceding(0).click();
         return getImageNameFromSrc(requireNonNull(itemImageSrc));
     }
@@ -56,11 +54,5 @@ public class MainPage {
     public MainPage checkProductsCountInFavourites(String count) {
         $("a[href='/my/favorites']").shouldHave(text(count));
         return this;
-    }
-
-    private void checkNoPopupVisible() {
-        if ($("div[data-widget='alertPopup']").has(text("Вы находитесь в зоне очень быстрой доставки!"))) {
-            $("[data-widget='alertPopup'] button").click();
-        }
     }
 }

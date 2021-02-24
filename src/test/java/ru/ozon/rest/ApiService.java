@@ -16,6 +16,17 @@ public class ApiService {
                     .setRequestTemplate("request.ftl")
                     .setResponseTemplate("response.ftl"));
 
+    public void changeLocalization(Map<String, String> cookies) {
+        given()
+                .baseUri("https://www.ozon.ru/api/location/v2/user/location")
+                .contentType(ContentType.JSON)
+                .body("{\"AreaId\":27862,\"DefaultAreaId\":27862,\"UserAgent\":\"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Mobile Safari/537.36\"}")
+                .when()
+                .post()
+                .then()
+                .statusCode(200);
+    }
+
     public void addItemToCart(Map<String, String> cookies) {
         // @formatter:off
         requestSpec
@@ -23,8 +34,6 @@ public class ApiService {
                 .contentType(ContentType.JSON)
                 .body("[{\"id\":147442362,\"quantity\":1}]")
                 .when()
-                .log()
-                .everything()
                 .post("addToCart")
                 .then()
                 .statusCode(200);
@@ -38,8 +47,6 @@ public class ApiService {
                 .contentType(ContentType.JSON)
                 .body("{\"skus\":[150630305]}")
                 .when()
-                .log()
-                .everything()
                 .post("favoriteBatchAddItems")
                 .then()
                 .statusCode(200);
