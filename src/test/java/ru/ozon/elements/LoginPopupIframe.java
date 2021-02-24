@@ -39,10 +39,9 @@ public class LoginPopupIframe {
         return this;
     }
 
-    public LoginPopupIframe checkNoPopupVisible() {
+    private void checkNoPopupVisible() {
         if ($("div[data-widget='alertPopup']").has(text("Вы находитесь в зоне очень быстрой доставки!"))) {
             $("[data-widget='alertPopup'] button").click();
         }
-        return this;
     }
 }

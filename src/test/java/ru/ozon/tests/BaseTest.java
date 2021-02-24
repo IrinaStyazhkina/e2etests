@@ -42,7 +42,6 @@ public class BaseTest {
 
         Configuration.baseUrl = "https://www.ozon.ru/";
         Configuration.startMaximized = true;
-        Configuration.timeout = 30000;
 
         if (isEmpty(System.getProperty("selenide.browser"))) {
             Configuration.browser = "chrome";
