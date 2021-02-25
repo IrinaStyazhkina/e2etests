@@ -1,7 +1,6 @@
-package ru.ozon.service;
+package ru.ozon.config;
 
 import org.aeonbits.owner.ConfigFactory;
-import ru.ozon.utils.WebConfig;
 
 import java.net.URL;
 

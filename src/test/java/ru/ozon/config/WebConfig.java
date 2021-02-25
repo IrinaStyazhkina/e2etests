@@ -1,4 +1,4 @@
-package ru.ozon.utils;
+package ru.ozon.config;
 
 import org.aeonbits.owner.Config;
 
@@ -7,6 +7,7 @@ import java.net.URL;
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
         "system:properties",
+        "classpath:web.properties"
 })
 public interface WebConfig extends Config {
 

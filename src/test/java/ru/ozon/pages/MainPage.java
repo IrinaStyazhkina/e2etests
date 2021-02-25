@@ -3,7 +3,7 @@ package ru.ozon.pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import ru.ozon.elements.LoginPopupIframe;
+import ru.ozon.pages.elements.LoginPopupIframe;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;

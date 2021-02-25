@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.refresh;
 import static com.codeborne.selenide.Selenide.sleep;
-import static ru.ozon.utils.TestUtils.prepareCookies;
+import static ru.ozon.helpers.TestHelper.prepareCookies;
 
 @Feature("User Actions")
 public class UserActionsTest extends BaseTest {

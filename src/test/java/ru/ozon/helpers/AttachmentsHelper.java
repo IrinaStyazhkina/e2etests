@@ -1,16 +1,17 @@
-package ru.ozon.utils;
+package ru.ozon.helpers;
 
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import ru.ozon.tests.BaseTest;
 
 import java.nio.charset.StandardCharsets;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class AttachmentsHelper {
+
+    public static String remoteUrlPart = System.getProperty("remote.browser.url", "selenoid.autotests.cloud");
 
     @Attachment(value = "Browser Logs", type = "text/plain")
     public static String attachBrowserLogs(String message) {
@@ -35,6 +36,6 @@ public class AttachmentsHelper {
     }
 
     public static String getVideoUrl() {
-        return "https://" + BaseTest.remoteUrlPart + "/video/" + ((RemoteWebDriver) getWebDriver()).getSessionId() + ".mp4";
+        return "https://" + remoteUrlPart + "/video/" + ((RemoteWebDriver) getWebDriver()).getSessionId() + ".mp4";
     }
 }

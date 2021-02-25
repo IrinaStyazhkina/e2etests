@@ -17,7 +17,7 @@ targetCompatibility = 1.8
 
 ext {
     allureVersion = "2.13.8"
-    selenideVersion = "5.18.1"
+    selenideVersion = "5.19.0"
     junitVersion = "5.7.0"
 }
 
@@ -62,13 +62,13 @@ tasks.withType(Test) {
     systemProperties += System.properties
     systemProperty "junit.jupiter.extensions.autodetection.enabled", "true"
 
-    if (project.hasProperty("threads")) {
+    if (System.getProperty("threads")) {
         systemProperties += [
                 'junit.jupiter.execution.parallel.enabled'                 : true,
                 'junit.jupiter.execution.parallel.mode.default'            : 'concurrent',
                 'junit.jupiter.execution.parallel.mode.classes.default'    : 'concurrent',
                 'junit.jupiter.execution.parallel.config.strategy'         : 'fixed',
-                'junit.jupiter.execution.parallel.config.fixed.parallelism': project.getProperty("threads").toInteger()
+                'junit.jupiter.execution.parallel.config.fixed.parallelism': System.getProperty("threads").toInteger()
         ]
     }
 

@@ -1,4 +1,4 @@
-package ru.ozon.elements;
+package ru.ozon.pages.elements;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -14,7 +14,8 @@ public class LoginPopupIframe {
             emailInput = $("[name='email']"),
             submitButton = $("[type='submit']"),
             loginByEmailButton = $(byText("Войти по почте")),
-            errorMessage = $("[qa-id='errorMessage']");
+            errorMessage = $("[qa-id='errorMessage']"),
+            alertPopup = $("div[data-widget='alertPopup']");
 
     @Step("Try to login with email: {email}")
     public LoginPopupIframe tryToLoginWithEmail(String email) {
@@ -40,8 +41,8 @@ public class LoginPopupIframe {
     }
 
     private void checkNoPopupVisible() {
-        if ($("div[data-widget='alertPopup']").has(text("Вы находитесь в зоне очень быстрой доставки!"))) {
-            $("[data-widget='alertPopup'] button").click();
+        if (alertPopup.has(text("Вы находитесь в зоне очень быстрой доставки!"))) {
+            alertPopup.$("button").click();
         }
     }
 }
